@@ -26,6 +26,10 @@ Dockerfile.cross
 .DS_Store
 artifacts
 cache
+tmp
+.env
 
 __pycache__
 *.pyc
+.pytest_cache
+dist
