@@ -22,11 +22,23 @@ client = StoreFactory.new_client(
     provider=<provider>, endpoint=<endpoint>, bucket=<bucket>
 )
 
+# Create a directory
+client.create_dir(dir_name)
+
+# Delete a directory with all its files
+client.delete_dir(dir_name)
+
 # Upload
 client.upload(src, dest)
 
+# Upload a directory with all its files
+client.upload_dir(src_dir, dest_dir)
+
 # Download
 client.download(src, dest)
+
+# Download a directory with all its files
+client.download_dir(src_dir, dest_dir)
 
 # Exists
 client.exists(filename)
