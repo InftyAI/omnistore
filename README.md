@@ -12,14 +12,14 @@ An unified python client to communicate with various kinds of object-store provi
 pip install omnistore
 ```
 
-### Methods
+### Usage
 
 ```python
 from omnistore.objstore import StoreFactory
 
 # Initialization
 client = StoreFactory.new_client(
-    provider=provider, endpoint=endpoint, bucket=bucket
+    provider=<provider>, endpoint=<endpoint>, bucket=<bucket>
 )
 
 # Upload
@@ -35,9 +35,9 @@ client.exists(filename)
 client.delete(filename)
 ```
 
-## Supported List
+## Supported Providers
 
-- [Alibaba Cloud OSS](https://www.alibabacloud.com/help/en/oss/)
+- OSS: [Alibaba Cloud OSS](https://www.alibabacloud.com/help/en/oss/)
 
 ## Contributions
 
