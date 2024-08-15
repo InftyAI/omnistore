@@ -37,7 +37,26 @@ client.delete(filename)
 
 ## Supported Providers
 
-- OSS: [Alibaba Cloud OSS](https://www.alibabacloud.com/help/en/oss/)
+### [Alibaba Cloud OSS](https://www.alibabacloud.com/help/en/oss/)
+
+Usage:
+
+```python
+client = StoreFactory.new_client(
+    provider="OSS", endpoint=<endpoint>, bucket=<bucket>
+)
+```
+
+Required environment variables:
+
+```yaml
+OSS_ACCESS_KEY_ID=
+OSS_ACCESS_KEY_SECRET=
+```
+
+## Development
+
+Once you want to run the integration tests, you should have a `.env` file locally, similar to the `.env.example`.
 
 ## Contributions
 
