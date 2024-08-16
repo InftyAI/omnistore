@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "omnistore"
-version = "0.0.3"
+version = "0.0.4"
 description = "An unified python client to communicate with various kinds of object-store providers."
 authors = ["InftyAI Community"]
 license = "MIT"
@@ -9,6 +9,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 oss2 = "^2.18.6"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
