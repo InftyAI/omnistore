@@ -4,11 +4,12 @@ import shutil
 import pytest
 from dotenv import load_dotenv
 
-from omnistore.objstore.objstore_factory import OBJECT_STORE_OSS, StoreFactory
+from omnistore.objstore import StoreFactory
+from omnistore.objstore.constant import OBJECT_STORE_MINIO
 
 load_dotenv()
 
-class TestOSS:
+class TestMinio:
     @pytest.fixture(scope="module", autouse=True)
     def setup_and_teardown(self):
         print("Setting up the test environment.")
@@ -27,7 +28,7 @@ class TestOSS:
         bucket = os.getenv("BUCKET")
 
         client = StoreFactory.new_client(
-            provider=OBJECT_STORE_OSS, endpoint=endpoint, bucket=bucket
+            provider=OBJECT_STORE_MINIO, endpoint=endpoint, bucket=bucket
         )
         assert False == client.exists("foo.txt")
 
@@ -48,19 +49,19 @@ class TestOSS:
         bucket = os.getenv("BUCKET")
 
         client = StoreFactory.new_client(
-            provider=OBJECT_STORE_OSS, endpoint=endpoint, bucket=bucket
+            provider=OBJECT_STORE_MINIO, endpoint=endpoint, bucket=bucket
         )
         assert False == client.exists("/test/foo.txt")
 
-        os.makedirs("./test-tmp/test", exist_ok=True)
-        with open("./test-tmp/test/foo.txt", "w") as file:
+        os.makedirs("./test-tmp/test/111", exist_ok=True)
+        with open("./test-tmp/test/111/foo.txt", "w") as file:
             file.write("test")
 
         client.upload_dir("./test-tmp/test", "test")
-        assert True == client.exists("test/foo.txt")
+        assert True == client.exists("test/111/foo.txt")
 
-        client.download_dir("test", "./test-tmp/test")
-        assert True == os.path.exists("./test-tmp/test/foo.txt")
+        client.download_dir("test", "./test-tmp/test1")
+        assert True == os.path.exists("./test-tmp/test1/111/foo.txt")
 
         client.delete_dir("test")
         assert False == client.exists("test/foo.txt")
