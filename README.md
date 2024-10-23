@@ -66,6 +66,23 @@ OSS_ACCESS_KEY_ID=
 OSS_ACCESS_KEY_SECRET=
 ```
 
+### [MINIO](https://min.io/)
+
+Usage:
+
+```python
+client = StoreFactory.new_client(
+    provider="MINIO", endpoint=<endpoint>, bucket=<bucket>
+)
+```
+
+Required environment variables:
+
+```yaml
+MINIO_ACCESS_KEY=
+MINIO_SECRET_KEY=
+```
+
 ## Development
 
 Once you want to run the integration tests, you should have a `.env` file locally, similar to the `.env.example`.
