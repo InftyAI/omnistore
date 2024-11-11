@@ -1,12 +1,13 @@
 from omnistore.objstore.aliyun_oss import OSS
+from omnistore.objstore.constant import OBJECT_STORE_OSS, OBJECT_STORE_MINIO
+from omnistore.objstore.minio import MinIO
 from omnistore.store import Store
-
-OBJECT_STORE_OSS = "OSS"
 
 
 class StoreFactory:
     ObjStores = {
         OBJECT_STORE_OSS: OSS,
+        OBJECT_STORE_MINIO: MinIO,
     }
 
     @classmethod
