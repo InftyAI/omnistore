@@ -83,6 +83,31 @@ MINIO_ACCESS_KEY=
 MINIO_SECRET_KEY=
 ```
 
+### [S3](https://aws.amazon.com/s3/)
+
+Usage:
+
+```python
+client = StoreFactory.new_client(
+    provider="S3", bucket=<bucket>
+)
+
+# Use endpoint when accessing S3 via a PrivateLink interface endpoint.
+# https://boto3.amazonaws.com/v1/documentation/api/latest/guide/s3-example-privatelink.html
+client = StoreFactory.new_client(
+    provider="S3", bucket=<bucket>, endpoint=<endpoint>
+)
+```
+
+Required environment variables:
+
+```yaml
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+# If a region is not specified, the bucket is created in the S3 default region (us-east-1).
+AWS_DEFAULT_REGION=
+```
+
 ## Development
 
 Once you want to run the integration tests, you should have a `.env` file locally, similar to the `.env.example`.
